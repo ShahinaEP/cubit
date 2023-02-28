@@ -6,12 +6,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../models/user_model.dart';
 
 class UserCubit extends Cubit<UserCubitState> {
-  // List<UserModel> userList = [];
+  List<UserModel> userList = [];
   UserCubit(): super(UserCubitInit());
 
   void getAllUserList() async{
     emit(UserCubitLoading());
-    await ApiService()!.getUserList();
+    userList = await ApiService().getUserList();
+    emit(UserCubitDataLoaded(userList: userList));
+
   }
 
 }
