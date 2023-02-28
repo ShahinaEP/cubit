@@ -3,6 +3,7 @@ import 'package:bloc_larning/screen/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'cubit_section/counter-cubit/counter_cubit.dart';
+import 'cubit_section/user-cubit-section/user_cubit.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context)=>CounterCubit()),
+        BlocProvider(create: (context)=>UserCubit()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -33,8 +35,8 @@ class MyApp extends StatelessWidget {
           // is not restarted.
           primarySwatch: Colors.blue,
         ),
-        home: const MyHomePage(),
-          // home: ApiCallingPage()
+        // home: const MyHomePage(),
+          home: ApiCallingPage()
       ),
     );
   }
