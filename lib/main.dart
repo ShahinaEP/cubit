@@ -1,8 +1,10 @@
 import 'package:bloc_larning/screen/api_calling_page.dart';
 import 'package:bloc_larning/screen/home_page.dart';
+import 'package:bloc_larning/screen/single_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'cubit_section/counter-cubit/counter_cubit.dart';
+import 'cubit_section/single-profile-cubit/single_profile_cubit.dart';
 import 'cubit_section/user-cubit-section/user_cubit.dart';
 
 void main() {
@@ -19,6 +21,7 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (context)=>CounterCubit()),
         BlocProvider(create: (context)=>UserCubit()),
+        BlocProvider(create: (context)=>SingleProfileCubit()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -36,7 +39,8 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         // home: const MyHomePage(),
-          home: ApiCallingPage()
+          // home: ApiCallingPage()
+          home: const SingleProfile(),
       ),
     );
   }

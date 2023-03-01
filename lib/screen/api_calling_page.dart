@@ -29,7 +29,7 @@ class _ApiCallingPageState extends State<ApiCallingPage> {
           body: BlocBuilder<UserCubit, UserCubitState>(
         builder: (context, state){
           if(state is UserCubitLoading){
-            return Center(
+            return const Center(
               child: CircularProgressIndicator(),
             );
           }else if(state is UserCubitDataLoaded){

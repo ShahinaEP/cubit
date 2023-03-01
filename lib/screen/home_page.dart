@@ -20,6 +20,9 @@ class _MyHomePageState extends State<MyHomePage> {
         title: const Text("Cubit Counter"),
         backgroundColor: Colors.brown,
         centerTitle: true,
+        actions: [
+
+        ],
       ),
       body: BlocBuilder<CounterCubit, CounterCubitState>(
         builder: (context, state){
@@ -48,10 +51,12 @@ class _MyHomePageState extends State<MyHomePage> {
                     ],
                 ),
                 // ApiCallingPage()
-                // ElevatedButton(onPressed:(){
-                //   Navigator.of(context)
-                //       .push(MaterialPageRoute(builder: (context) => ApiCallingPage()));
-                // } , child: const Text('Api calling page'))
+                ElevatedButton(onPressed:(){
+
+                    ApiCallingPage();
+                  // Navigator.of(context)
+                  //     .push(MaterialPageRoute(builder: (context) => ApiCallingPage()));
+                } , child: const Text('Api calling page'))
               ],
             ),
           );
