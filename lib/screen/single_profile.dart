@@ -38,82 +38,119 @@ class _SingleProfileState extends State<SingleProfile> {
               );
             }else if(state is SingleProfileCubitDataLoaded){
               ProfileModel profileModel = state.profile;
-              return  Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+              return  SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
 
-                      Card(
-                        color: Colors.grey.shade300,
-                        child: Padding(
-                          padding: const EdgeInsets.fromLTRB(15, 4, 15, 4),
-                          child: SizedBox(
-                            width: MediaQuery.of(context).size.width,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "Page: ${profileModel.page}",
-                                  style: style,
-                                ),
-                                Text(
-                                  "Per Page: ${profileModel.perPage}",
-                                  style: style,
-                                ),
-                                Text(
-                                  "Total Pages: ${profileModel.totalPages}",
-                                  style: style,
-                                ),
-                                Text(
-                                  "Total Data: ${profileModel.total}",
-                                  style: style,
-                                ),
-                              ],
+                        Card(
+                          color: Colors.grey.shade300,
+                          child: Padding(
+                            padding: const EdgeInsets.fromLTRB(15, 4, 15, 4),
+                            child: SizedBox(
+                              width: MediaQuery.of(context).size.width,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "Page: ${profileModel.page}",
+                                    style: style,
+                                  ),
+                                  Text(
+                                    "Per Page: ${profileModel.perPage}",
+                                    style: style,
+                                  ),
+                                  Text(
+                                    "Total Pages: ${profileModel.totalPages}",
+                                    style: style,
+                                  ),
+                                  Text(
+                                    "Total Data: ${profileModel.total}",
+                                    style: style,
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),
-                      ),
 
 
-                  ListView.builder(
-                    primary: true,
-                    shrinkWrap: true,
-                    itemCount: profileModel.data?.length,
-                    itemBuilder: (context, itemIndex){
+                    ListView.builder(
+                      primary: true,
+                      shrinkWrap: true,
+                      itemCount: profileModel.data?.length,
+                      itemBuilder: (context, itemIndex){
 
-                    return Padding(
-                      padding: const EdgeInsets.all(4.0),
-                      child: Card(
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: ListTile(
-                            leading:  Text(profileModel.data![itemIndex].id.toString(), style: const TextStyle(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 25
-                            ),),
-                            title: Text(profileModel.data![itemIndex].firstName.toString(),style: const TextStyle(
-                              fontWeight: FontWeight.w500,
-                              fontSize: 20
-                              ),),
-
-                              subtitle: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                Text(profileModel.data![itemIndex].lastName.toString(),style: const TextStyle(
+                      return Padding(
+                        padding: const EdgeInsets.all(4.0),
+                        child: Card(
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: ListTile(
+                              leading: Container(
+                                // decoration: BoxDecoration(
+                                //   borderRadius: \
+                                // ),
+                                  // constraints: BoxConstraints(minWidth: 50, minHeight: 50),
+                                  child: Image.network(
+                                    profileModel.data![itemIndex].avatar.toString(),
+                                    width: 50,
+                                    height: 50,
+                                  )),
+                              // Text(profileModel.data![itemIndex].id.toString(), style: const TextStyle(
+                              // fontWeight: FontWeight.w500,
+                              // fontSize: 25
+                              // ),),
+                              title: Text(profileModel.data![itemIndex].firstName.toString(),style: const TextStyle(
                                 fontWeight: FontWeight.w500,
-                                fontSize: 17
+                                fontSize: 20
                                 ),),
-                                Text("Email: ${profileModel.data![itemIndex].email.toString()}",style: const TextStyle(
-                                fontWeight: FontWeight.w500,
-                                fontSize: 17
-                               ),),
-                              ]),
+
+                                subtitle: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                  Text(profileModel.data![itemIndex].lastName.toString(),style: const TextStyle(
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 17
+                                  ),),
+                                  Text("Email: ${profileModel.data![itemIndex].email.toString()}",style: const TextStyle(
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 17
+                                 ),),
+                                ]),
+                            ),
+                          ),
+                        ),
+                      );
+                    }),
+
+
+                    Card(
+                      color: Colors.grey.shade300,
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(15, 4, 15, 4),
+                        child: SizedBox(
+                          width: MediaQuery.of(context).size.width,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Text: ${profileModel.support!.text}",
+                                style: style,
+                              ),
+                              Text(
+                                "Url: ${profileModel.support!.url}",
+                                style: style,
+                              ),
+
+                            ],
                           ),
                         ),
                       ),
-                    );
-                  }),
+                    ),
 
-                ],
+                  ],
+                ),
               );
             }
             else{
